@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :books
   has_many :libraries
-  has_many :libraries_additions, through: :libraries, source: :book
+  has_many :library_additions, through: :libraries, source: :book
 
   def subscribed?
     stripe_subscription_id?
