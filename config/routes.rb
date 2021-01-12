@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   end
   resources :library, only: [:index]
   resources :pricing, only: [:index]
-  devise_for :users, path: 'auth', path_names: { registration: 'signup' }
+  devise_for :users, controllers: { registrations: "registrations" }
+  # devise_for :users, path: 'auth', path_names: { registration: 'signup' }
   root to: 'books#index'
   resources :subscriptions
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
