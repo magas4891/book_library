@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application','data-turbolinks-track': 'reload' %>
+    <script src="https://js.stripe.com/v3/"></script>
     <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>
 
   </head>
@@ -21,12 +22,12 @@
     <% end %>
 
     <% if flash[:alert] %>
-    <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %></p>
-    </div>
+      <div class="notification is-danger global-notification">
+        <p class="alert"><%= alert %></p>
+      </div>
     <% end %>
 
-     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class:"navbar-item" do %>
           <h1 class="title is-5 has-text-white"><%= Rails.configuration.application_name %></h1>
@@ -59,7 +60,7 @@
                   <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
                     <div class="navbar-dropdown is-right">
                       <%= link_to edit_user_registration_path, class:"navbar-item" do %>
-                        <% current_user.name %>
+                        <%= current_user.name %>
                         <% if admin? %>
                           &nbsp; <span class="tag is-warning">ADMIN</span>
                         <% end %>
@@ -82,7 +83,7 @@
           </div>
         </div>
       </div>
-  </nav>
+    </nav>
 
   <div class="container">
     <%= yield %>

@@ -1,0 +1,26 @@
+<div class="section">
+  <div class="columns is-centered">
+    <div class="column is-6 border pa5">
+      <br />
+      <p>Chosen plan: <strong><%= params[:plan] %></strong></p>
+      <br />
+
+      <%= form_tag subscriptions_path, id: 'payment-form' do |form| %>
+        <div class="field">
+          <label for="card-element" class="label">Enter credit or debit card</label>
+
+          <div id="card-element">
+            <!-- Place for Stripe elements -->
+          </div>
+
+          <div id="card-error" role="alert"></div>
+
+          <%= hidden_field_tag :plan_id, params[:plan_id] %>
+
+          <button class="button is-fullwidth is-link mt4">Submit</button>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

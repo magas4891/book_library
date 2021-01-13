@@ -1,5 +1,5 @@
 class LibraryController < ApplicationController
-  before_action :authentificate_user!
+  before_action :authenticate_user!
 
   def index
     @library_books = current_user.library_additions
